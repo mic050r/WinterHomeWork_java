@@ -1,7 +1,6 @@
 package homework;
 
 import java.util.Scanner;
-
 /*
 #문제 5 2차원 배열에 1,2 학기 성적을 다음과 같이 저장하고 3년간의 전체 평균 점수를 구하라
 <조건>
