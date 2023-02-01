@@ -32,6 +32,7 @@ public class Grade2 {
 		double avg = sum / cnt;
 		// 소수점 둘째자리까지
 		System.out.printf("3년간 의 평균 \t : %.2f", avg);
+		//commit 확인
 	}
 
 	public static void main(String[] args) {
