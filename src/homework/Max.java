@@ -18,6 +18,10 @@ public class Max {
 		for (int i = 0; i < num.length; i++) {
 			System.out.print((i + 1) + "번째 숫자 : ");
 			num[i] = sc.nextInt();
+			if(num[i]<0) {
+				System.out.println("다시 입력해주세요!");
+				i -= 1;
+			}
 		}
 
 		// 가장 큰수 구하기
