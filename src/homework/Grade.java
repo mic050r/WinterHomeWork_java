@@ -21,16 +21,17 @@ public class Grade {
 		st_Num = sc.nextInt();
 		
 		//점수 3개 입력
-		int st_Sco[][] = new int[st_Num][];
+		int st_Sco[][] = new int[st_Num][3];
 		for (int i = 0; i < st_Sco.length; i++) {
-			for (int j = 0; j < 3; j++) {
-				System.out.print("점수" + (i + 1) + "입력 : ");
-				st_Sco[0][0] = sc.nextInt();
-				st_Sco[0][1] = sc.nextInt();
-				st_Sco[0][2] = sc.nextInt();
-				//st_Sco[i][j] = sc.nextInt();
-				
+			for (int j = 0; j < st_Sco.length; j++) {
+				System.out.print("점수" + (j + 1) + "입력 : ");
+				st_Sco[i][j] = sc.nextInt();
+				if(st_Sco[i][j]<0) {
+					System.out.print("다시 입력하세요 ===>");
+					j -= 1;
+				}
 			}
+			System.out.println("");
 		}
 	}
 	
