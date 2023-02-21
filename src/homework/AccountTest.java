@@ -33,29 +33,20 @@ class Account {
 		this.money = money;
 	}
 
-	public void printResult() {
-		System.out.println("계좌번호 " + getAcc_Num() + "의 현재 잔액 : " + money);
-	}
-
 	public String getAcc_Num() {
 		return acc_Num;
 	}
 
-	// 계좌번호 입력
 	public void setAcc_Num() {
-		// this.acc_Num = acc_Num;
+		bar();
 		System.out.print("계좌번호를 입력하세요 : ");
-		acc_Num = sc.nextLine();
+		this.acc_Num = sc.nextLine();
 		printResult();
 		empty();
 	}
 
 	public int getMoney() {
 		return money;
-	}
-
-	public void setMoney(int money) {
-		this.money = money;
 	}
 
 	public void deposit() {
@@ -71,11 +62,10 @@ class Account {
 		int w_Mon = sc.nextInt();
 		if (money < w_Mon) {
 			System.out.println("출금하려는 계좌의 잔액이 부족하여 출금이 불가능합니다");
-			System.out.print("출금할 금액 : ");
-			w_Mon = sc.nextInt();
 		} else {
 			money -= w_Mon;
 		}
+
 		printResult();
 	}
 
@@ -86,29 +76,59 @@ class Account {
 	public void bar() {
 		System.out.println("=======================================");
 	}
+
+	public void printResult() {
+		System.out.println("계좌번호 " + getAcc_Num() + "의 현재 잔액 : " + money);
+	}
 }
 
 public class AccountTest {
 
 	public static void main(String[] args) {
-		Account a1 = new Account();
+		Scanner sc = new Scanner(System.in);
+
+		String bar[] = { "\t계좌번호 \t\t", " 잔액" };
+		// 계좌번호 리스트
+		String acc_Num[] = new String[3];
+		// 잔액 리스트
+		int balance[] = new int[3];
+
 		// 고객1
-		a1.bar();
+		Account a1 = new Account();
 		a1.setAcc_Num();
 		a1.deposit();
 		a1.withdraw();
-		// 고객 2
+		acc_Num[0] = a1.getAcc_Num();
+		balance[0] = a1.getMoney();
+
+		// 고객2
 		Account a2 = new Account();
-		a2.bar();
 		a2.setAcc_Num();
 		a2.deposit();
 		a2.withdraw();
+		acc_Num[1] = a2.getAcc_Num();
+		balance[1] = a2.getMoney();
+
 		// 고객3
 		Account a3 = new Account();
-		a3.bar();
 		a3.setAcc_Num();
 		a3.deposit();
 		a3.withdraw();
+		acc_Num[2] = a3.getAcc_Num();
+		balance[2] = a3.getMoney();
+
+		a1.bar();
+		for (int i = 0; i < bar.length; i++) {
+			System.out.print(bar[i]);
+		}
+		a1.empty();
+		a1.bar();
+
+		// 반복문
+		for (int i = 0; i < 3; i++) {
+			System.out.println("\t" + acc_Num[i] + "\t\t" + balance[i]);
+		}
+		a1.bar();
 	}
 
 }
