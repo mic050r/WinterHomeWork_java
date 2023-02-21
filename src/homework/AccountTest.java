@@ -37,14 +37,13 @@ class Account {
 		System.out.println("계좌번호 " + getAcc_Num() + "의 현재 잔액 : " + money);
 	}
 
-	
 	public String getAcc_Num() {
 		return acc_Num;
 	}
 
-	//계좌번호 입력
+	// 계좌번호 입력
 	public void setAcc_Num() {
-		//this.acc_Num = acc_Num;
+		// this.acc_Num = acc_Num;
 		System.out.print("계좌번호를 입력하세요 : ");
 		acc_Num = sc.nextLine();
 		printResult();
@@ -70,14 +69,20 @@ class Account {
 	public void withdraw() {
 		System.out.print("출금할 금액 : ");
 		int w_Mon = sc.nextInt();
-		money -= w_Mon;
+		if (money < w_Mon) {
+			System.out.println("출금하려는 계좌의 잔액이 부족하여 출금이 불가능합니다");
+			System.out.print("출금할 금액 : ");
+			w_Mon = sc.nextInt();
+		} else {
+			money -= w_Mon;
+		}
 		printResult();
 	}
 
 	public void empty() {
 		System.out.println("");
 	}
-	
+
 	public void bar() {
 		System.out.println("=======================================");
 	}
@@ -85,15 +90,25 @@ class Account {
 
 public class AccountTest {
 
-	
 	public static void main(String[] args) {
 		Account a1 = new Account();
+		// 고객1
 		a1.bar();
 		a1.setAcc_Num();
 		a1.deposit();
 		a1.withdraw();
-		a1.bar();
-		
+		// 고객 2
+		Account a2 = new Account();
+		a2.bar();
+		a2.setAcc_Num();
+		a2.deposit();
+		a2.withdraw();
+		// 고객3
+		Account a3 = new Account();
+		a3.bar();
+		a3.setAcc_Num();
+		a3.deposit();
+		a3.withdraw();
 	}
 
 }
